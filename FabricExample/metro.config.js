@@ -11,9 +11,7 @@
 // module.exports = mergeConfig(getDefaultConfig(__dirname), config);
 
 
-/* eslint-disable import/no-commonjs */
-
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('@react-native/metro-config');
 const defaultConfig = getDefaultConfig(__dirname);
 const path = require('path');
 const exclusionList = require('metro-config/private/defaults/exclusionList').default;

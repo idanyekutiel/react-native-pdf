@@ -11,12 +11,10 @@
 // module.exports = mergeConfig(getDefaultConfig(__dirname), config);
 
 
-/* eslint-disable import/no-commonjs */
-
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const { getDefaultConfig } = require('@react-native/metro-config');
 const defaultConfig = getDefaultConfig(__dirname);
 const path = require('path');
-const exclusionList = require('metro-config/private/defaults/exclusionList');
+const exclusionList = require('metro-config/private/defaults/exclusionList').default;
 const escape = require('escape-string-regexp');
 const pack = require('../package.json');
 
@@ -33,7 +31,7 @@ module.exports = {
   // So we exclude them at the root, and alias them to the versions in example's node_modules
   resolver: {
     ...defaultConfig.resolver,
-    blacklistRE: exclusionList(
+    blockList: exclusionList(
       modules.map(
         m => new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`),
       ),
